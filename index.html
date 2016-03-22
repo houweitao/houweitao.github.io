@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Tips/" style="font-size: 15px;">Tips</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/碎碎念/" style="font-size: 10px;">碎碎念</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+						<a href="/tags/Tips/" style="font-size: 15px;">Tips</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/碎碎念/" style="font-size: 10px;">碎碎念</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
 					</div>
 				</section>
 				
@@ -390,68 +390,6 @@
         <p class="article-more-link">
           <a  href="/2016/03/18/一道编程题：贪食蛇可以获得的最大分数？/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MAC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/01/MAC/" class="article-date">
-  	<time datetime="2016-02-01T12:03:09.000Z" itemprop="datePublished">2016-02-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/01/MAC/">MAC</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天期待已久的Mac Pro今天终于到了。本来想从官网买的，因为家住的小村送货太慢只得作罢，转战京东。</p>
-<p>不得不说jd真的是未来啊！村子里面也可以做到隔天送到，真的优势太大了，跟淘宝相比。查了下保修期什么的，时间也对，nice。</p>
-<p>一体机的本子，真的手感太棒！感谢老爹老妈赞助我…</p>
-<p>然后今天下午就在折腾Mac的编程环境了，java。除此之外还有之前一直在用的软件，Pocket啊，为知笔记啊。Git啊GitHub的博客啊之类。到现在算是完全弄好，刚上手有点不适应，之后应该会好多吧？</p>
-<p>Mark下。</p>
-<p>2016年02月01日20:08:24</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-
       
       <div class="clearfix"></div>
     </div>
@@ -842,9 +780,74 @@
 
 
   
+    <article id="post-System-out-print-语句对java性能的影响" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/24/System-out-print-语句对java性能的影响/" class="article-date">
+  	<time datetime="2015-12-24T04:00:07.000Z" itemprop="datePublished">2015-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/24/System-out-print-语句对java性能的影响/">System.out.print 语句对java性能的影响</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>做这个题目的时候发现的：<a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="external">https://leetcode.com/problems/container-with-most-water/</a></p>
+<p>Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p>Note: You may not slant the container.</p>
+<p>我的思想是首尾两个指针扫描，感觉有点快速排序的那个意思。计算当前的面积，与最大面积进行比较，如果当前大，那么最大面积=当前面积。然后比较首尾元素，让更小的那一端移动。直到首尾相差为1。</p>
+<p>线性的时间复杂度。但是提交之后却报错time out，百思不得其解..后来我把输出语句给注释掉之后竟然通过了！！原来print语句这么耗费时间的吗？？</p>
+<p>长度为5000的数组进行本地测试的结果（注释掉print前后）：<br>前：137毫秒<br>后：0毫秒</p>
+<img src="/images/printAndSpeed.png" title="print对性能的影响">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int maxArea(int[] height) &#123;</span><br><span class="line">		<span class="keyword">if</span> (height.length &lt; 2)</span><br><span class="line">			<span class="built_in">return</span> 0;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			int low = 0, high = height.length - 1;</span><br><span class="line">			int max = Math.min(height[low], height[high]) * (high - low);</span><br><span class="line">			<span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">				<span class="keyword">if</span> (height[low] &lt;= height[high]) &#123;</span><br><span class="line">					low++;</span><br><span class="line">				&#125; <span class="keyword">else</span></span><br><span class="line">					high--;</span><br><span class="line"></span><br><span class="line">				System.out.println(low + <span class="string">", "</span> + high);</span><br><span class="line">				max = Math.max(max, Math.min(height[low], height[high]) * (high - low));</span><br><span class="line">				System.out.println(max);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(max);</span><br><span class="line">			<span class="built_in">return</span> max;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>2015年12月24日12:08:07</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
