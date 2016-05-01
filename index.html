@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Tips/" style="font-size: 15px;">Tips</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/吐槽/" style="font-size: 10px;">吐槽</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/碎碎念/" style="font-size: 10px;">碎碎念</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+						<a href="/tags/Tips/" style="font-size: 15px;">Tips</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/interesting/" style="font-size: 10px;">interesting</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/吐槽/" style="font-size: 10px;">吐槽</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/碎碎念/" style="font-size: 10px;">碎碎念</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
 					</div>
 				</section>
 				
@@ -185,6 +185,78 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-实现虾米音乐免虾币下载" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/01/实现虾米音乐免虾币下载/" class="article-date">
+  	<time datetime="2016-05-01T08:45:40.000Z" itemprop="datePublished">2016-05-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/01/实现虾米音乐免虾币下载/">实现虾米音乐免虾币下载</a>
+    </h1>
+  
+
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>平心而论，虽然没了杰伦 coldplay，但是对于冷门的歌曲，虾米的曲库还算比较全的，是一个不错的选择。之前下载歌曲的时候用过各种 chrome 插件，大概的原理都是浏览器听歌的时候嗅探访问地址，或者到浏览器缓存中招到歌曲。也一直没去深究没想去做一个自己的下载器。</p>
+<p>昨天晚上的时候看到有人提到歌曲下载：<a href="http://www.oschina.net/code/snippet_1438179_55831" target="_blank" rel="external">据网易云音乐上面的歌单来下载 FLAC 无损音乐</a>，于是乎研究了下虾米的歌曲下载。今天花了2个小时把虾米的下载写了出来。</p>
+<h3 id="u5206_u6790"><a href="#u5206_u6790" class="headerlink" title="分析"></a>分析</h3><p>通过对浏览器发出请求的分析容易得出，歌曲的下载地址是如下形式的url：<a href="http://m5.file.xiami.com/46/1046/2100200848/1774781460_58802904_l.mp3?auth_key=3200136d589894789ba042e2843e2b0c-1462147200-0-null" target="_blank" rel="external">http://m5.file.xiami.com/46/1046/2100200848/1774781460_58802904_l.mp3?auth_key=3200136d589894789ba042e2843e2b0c-1462147200-0-null</a></p>
+<p>这里关键是要找出auth_key。</p>
+<p>这里要用到这个地址：<a href="http://www.xiami.com/song/playlist/id/[歌曲ID]/object_name/default/object_id/0" target="_blank" rel="external">http://www.xiami.com/song/playlist/id/[歌曲ID]/object_name/default/object_id/0</a></p>
+<p>根据歌曲的 ID,找到上面的链接，你会看到一个 xml，然后根据里面的 locations 来找出原始的下载链接，这里 locations 是用凯撒方阵加密的，破解不难，不过要注意不是齐整方阵的情况。</p>
+<p>拿到下载链接后，下载就简单啦~！能下载一首歌，下载一个专辑也不是难事啦~！</p>
+<p>GitHub 地址：<a href="https://github.com/houweitao/DownloadXiaMi" target="_blank" rel="external">DownloadXiaMi</a></p>
+<h3 id="u6548_u7387"><a href="#u6548_u7387" class="headerlink" title="效率"></a>效率</h3><p>本地测试：<a href="http://www.xiami.com/album/2100200848" target="_blank" rel="external">此时时刻 巡回演唱会</a> 25+1 首歌曲，全部下载成功，共133M，10M电信带宽，耗时1分38秒。</p>
+<h5 id="u7B80_u5355_u7684_u6570_u5B66_uFF1A1-25M/S_*_98S__3D_122-5M"><a href="#u7B80_u5355_u7684_u6570_u5B66_uFF1A1-25M/S_*_98S__3D_122-5M" class="headerlink" title="简单的数学：1.25M/S * 98S = 122.5M"></a>简单的数学：1.25M/S * 98S = 122.5M</h5><p>说明本程序的速度还是相当可以的（电信带宽竟然超过了平均？）</p>
+<p>Just For Fun ^_^</p>
+<p>2016年05月01日16:41:15</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interesting/">interesting</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-好的程序员和差的程序员差别是什么" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -779,73 +851,6 @@
 
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Maximal-Square-出乎意料的结果" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/Maximal-Square-出乎意料的结果/" class="article-date">
-  	<time datetime="2016-01-02T18:23:31.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Maximal-Square-出乎意料的结果/">Maximal Square. 出乎意料的结果..</a>
-    </h1>
-  
-
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>真的是不知道不明了呀..</p>
-<p>有的时候吧，以为自己做的不错，结果却是超时；有的时候吧，以为自己用的是笨方法，结果却是相当不错..这次就算这样子的，用了个笨方法，却超过了88%的方案..</p>
-<p>题目如下：<a href="https://leetcode.com/problems/maximal-square">https://leetcode.com/problems/maximal-square</a></p>
-<p>就算扫描每个节点，假设以当前节点当做结果正方形的左上角的顶点，求出当前节点下的最大面积。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/03/Maximal-Square-出乎意料的结果/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
