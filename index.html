@@ -438,64 +438,6 @@
 
 
   
-    <article id="post-我的简历" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/23/我的简历/" class="article-date">
-  	<time datetime="2016-03-23T08:49:41.000Z" itemprop="datePublished">2016-03-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/23/我的简历/">我的简历</a>
-    </h1>
-  
-
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u627E_u5B9E_u4E60ing-_u6211_u7684_u90AE_u7BB1_u5730_u5740_u662F_3A_whuelvis@live-com"><a href="#u627E_u5B9E_u4E60ing-_u6211_u7684_u90AE_u7BB1_u5730_u5740_u662F_3A_whuelvis@live-com" class="headerlink" title="找实习ing..我的邮箱地址是: whuelvis@live.com"></a>找实习ing..我的邮箱地址是: whuelvis@live.com</h3><img src="/images/cv2.jpg" title="cv">
-<p>2016年3月23日16:50:46</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-calculator-to-exam" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -831,6 +773,74 @@
 <img src="/images/localRedis.png" title="神奇的redis">
 <p>我了个大去..这个太厉害了…</p>
 <p>2016年1月12日12:01:19</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Redis太棒了！" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/09/Redis太棒了！/" class="article-date">
+  	<time datetime="2016-01-08T16:37:04.000Z" itemprop="datePublished">2016-01-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/09/Redis太棒了！/">Redis太棒了！</a>
+    </h1>
+  
+
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做一个分析日志的程序。</p>
+<p>一开始是用MySQL做的，远程读取数据库，很慢。是这样的，爬虫程序没30分钟可以产生8个日志文件，每个日志文件10M，用mysql来处理的话，我处理一个日志文件需要43分钟。。太坑爹了。</p>
+<p>然后想到了内存数据库Redis，正好一个月前读了《Redis实战》嘛。正好实战下。</p>
+<p>过程是这样子的，我先把整个数据库读取到Redis里面。然后把查询mysql改成查询redis。这样子确实带来了性能的提升。从43分钟进步到了10分钟。</p>
+<p>这里有个问题。</p>
+<p>redis是内存数据库，我去远程查另一台电脑上面的redis队列的内容，为什么不在本地建几个HashMap呢？</p>
+<p>这两个哪个性能更优一些呢？明天的时候有空试验下..</p>
+<p>2016年1月9日00:42:03</p>
 
       
     </div>

@@ -186,74 +186,6 @@
 
       <div class="body-wrap">
   
-    <article id="post-Redis太棒了！" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/09/Redis太棒了！/" class="article-date">
-  	<time datetime="2016-01-08T16:37:04.000Z" itemprop="datePublished">2016-01-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/09/Redis太棒了！/">Redis太棒了！</a>
-    </h1>
-  
-
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在做一个分析日志的程序。</p>
-<p>一开始是用MySQL做的，远程读取数据库，很慢。是这样的，爬虫程序没30分钟可以产生8个日志文件，每个日志文件10M，用mysql来处理的话，我处理一个日志文件需要43分钟。。太坑爹了。</p>
-<p>然后想到了内存数据库Redis，正好一个月前读了《Redis实战》嘛。正好实战下。</p>
-<p>过程是这样子的，我先把整个数据库读取到Redis里面。然后把查询mysql改成查询redis。这样子确实带来了性能的提升。从43分钟进步到了10分钟。</p>
-<p>这里有个问题。</p>
-<p>redis是内存数据库，我去远程查另一台电脑上面的redis队列的内容，为什么不在本地建几个HashMap呢？</p>
-<p>这两个哪个性能更优一些呢？明天的时候有空试验下..</p>
-<p>2016年1月9日00:42:03</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Maximal-Square-出乎意料的结果" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -823,6 +755,70 @@
       
         <p class="article-more-link">
           <a  href="/2015/12/10/Google变种面试题：离所有健身器材最近的位置/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Google面试题：离所有健身器材最近的位置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/09/Google面试题：离所有健身器材最近的位置/" class="article-date">
+  	<time datetime="2015-12-09T09:44:25.000Z" itemprop="datePublished">2015-12-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/09/Google面试题：离所有健身器材最近的位置/">Google面试题：离所有健身器材最近的位置</a>
+    </h1>
+  
+
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>input是一个二维char数组代表一个gym，@是wall，不能通过，<em>是健身器材，其他都是空格，要求找一个空格到所有</em>的距离最短</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/09/Google面试题：离所有健身器材最近的位置/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
