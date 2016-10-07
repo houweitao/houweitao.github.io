@@ -186,6 +186,72 @@
 
       <div class="body-wrap">
   
+    <article id="post-Maven项目部署到Linux服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/25/Maven项目部署到Linux服务器/" class="article-date">
+  	<time datetime="2016-01-25T09:11:01.000Z" itemprop="datePublished">2016-01-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/25/Maven项目部署到Linux服务器/">Maven项目部署到Linux服务器</a>
+    </h1>
+  
+
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一次用linux服务器还是半年前，那次是非maven的项目。记得大概流程是把项目所需要的jar包，还有项目生成的target下的class文件上传到服务器，然后用一个sh文件运行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">APP_HOME=/root/autocrawler</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$APP_HOME</span>"</span>/lib/*.jar</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> CLASSPATH=<span class="string">"<span class="variable">$CLASSPATH</span>"</span>:<span class="string">"<span class="variable">$i</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$CLASSPATH</span></span><br><span class="line">nohup java -Xms50m -Xmx250m spider.test.WebCrawlerFinalTest &amp;</span><br></pre></td></tr></table></figure>
+<p>现在换成了Maven的工程因为项目所需要的jar包被maven管理，所以一时还手忙脚乱不知道怎么做好。好不容易成功了，现在总结下免得下次再用的时候忘记了。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/25/Maven项目部署到Linux服务器/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-redis的性能优势-震惊了" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -757,70 +823,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jave中的break语句跳出的范围？" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/10/jave中的break语句跳出的范围？/" class="article-date">
-  	<time datetime="2015-12-10T07:49:37.000Z" itemprop="datePublished">2015-12-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/10/jave中的break语句跳出的范围？/">jave中的break语句跳出的范围？</a>
-    </h1>
-  
-
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果是多层的for语句，那么break只是跳出当前的循环。<br>如果是for语句内有while语句，break在while语句中，此时也会跳出for循环。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 30; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"第 "</span>+i+<span class="string">"次循环"</span>);</span><br><span class="line">			<span class="keyword">while</span> (i &lt; 100) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				<span class="keyword">if</span> (i == 50) &#123;</span><br><span class="line">					System.out.println(<span class="string">"jump out"</span>);</span><br><span class="line">					<span class="built_in">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第 0次循环</span><br><span class="line">jump out</span><br></pre></td></tr></table></figure>
-<p>2015年12月10日15:51:10</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
 	</div>
 
       

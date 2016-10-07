@@ -186,6 +186,70 @@
 
       <div class="body-wrap">
   
+    <article id="post-jave中的break语句跳出的范围？" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/10/jave中的break语句跳出的范围？/" class="article-date">
+  	<time datetime="2015-12-10T07:49:37.000Z" itemprop="datePublished">2015-12-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/10/jave中的break语句跳出的范围？/">jave中的break语句跳出的范围？</a>
+    </h1>
+  
+
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果是多层的for语句，那么break只是跳出当前的循环。<br>如果是for语句内有while语句，break在while语句中，此时也会跳出for循环。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 30; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"第 "</span>+i+<span class="string">"次循环"</span>);</span><br><span class="line">			<span class="keyword">while</span> (i &lt; 100) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				<span class="keyword">if</span> (i == 50) &#123;</span><br><span class="line">					System.out.println(<span class="string">"jump out"</span>);</span><br><span class="line">					<span class="built_in">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第 0次循环</span><br><span class="line">jump out</span><br></pre></td></tr></table></figure>
+<p>2015年12月10日15:51:10</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Google变种面试题：离所有健身器材最近的位置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
