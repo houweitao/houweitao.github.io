@@ -259,6 +259,113 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/11/Paint-House/" itemprop="url">
+                  Paint House
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-11T11:19:13+08:00" content="2015-12-11">
+              2015-12-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/11/Paint-House/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/11/Paint-House/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>There are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.</p>
+<p>The cost of painting each house with a certain color is represented by a n x 3 cost matrix. For example, costs[0][0] is the cost of painting house 0 with color red; costs[1][2] is the cost of painting house 1 with color green, and so on… Find the minimum cost to paint all houses.</p>
+<p>Note:<br>All costs are positive integers.</p>
+<p>使用了动态规划..</p>
+<p>自顶向下的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int paint(int n, int cost[][]) &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="built_in">help</span>(n, cost, 3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//思想：动态规划。用forbidden这个参数来实现相邻房子不同颜色。</span><br><span class="line">//自顶向下</span><br><span class="line">//如果自底向上的话可以用一个跟cost相同大小的数组，来保存最后一个房子选择这个颜色时的最小花费</span><br><span class="line">private int <span class="built_in">help</span>(int n, int cost[][], int forbiden) &#123;</span><br><span class="line">	// TODO Auto-generated method stub</span><br><span class="line">	int min = Integer.MAX_VALUE;</span><br><span class="line">	<span class="keyword">if</span> (n == 1) &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (i != forbiden) &#123;</span><br><span class="line">				min = Math.min(min, cost[0][i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> min;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (i != forbiden)</span><br><span class="line">				min = Math.min(min, cost[n - 1][i] + <span class="built_in">help</span>(n - 1, cost, i));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> min;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>自底向上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//n:要粉刷的总共n个房子。数目</span><br><span class="line">//用某种颜色粉刷某个房子的花费。</span><br><span class="line">//复杂度应该是 n*k*k k为颜色个数，n为房子个数</span><br><span class="line">private int <span class="built_in">help</span>B2U(int n, int cost[][]) &#123;</span><br><span class="line">	// TODO Auto-generated method stub</span><br><span class="line">	int[][] minCost = new int[cost.length][cost[0].length];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; n; i++) &#123;//i代表粉刷第I+1个房子</span><br><span class="line">		<span class="keyword">if</span> (i == 0) &#123;</span><br><span class="line">			minCost[0][0] = cost[0][0];</span><br><span class="line">			minCost[0][1] = cost[0][1];</span><br><span class="line">			minCost[0][2] = cost[0][2];</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span> (int k = 0; k &lt; 3; k++) &#123;//第K个房子，选择第K种颜色的情况</span><br><span class="line">				int min = Integer.MAX_VALUE;</span><br><span class="line">				<span class="keyword">for</span> (int j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> (j != k)</span><br><span class="line">						min = Math.min(min, minCost[i - 1][j]);</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				minCost[i][k] = cost[i][k] + min;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> Math.min(minCost[n - 1][0], Math.min(minCost[n - 1][1], minCost[n - 1][2]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2015年12月11日11:22:36</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/10/jave中的break语句跳出的范围？/" itemprop="url">
                   jave中的break语句跳出的范围？
                 </a>
@@ -1010,7 +1117,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
