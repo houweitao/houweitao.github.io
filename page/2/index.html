@@ -259,6 +259,144 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/20/现代软件工程-计算器的制作/" itemprop="url">
+                  现代软件工程:计算器的制作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-20T21:45:49+08:00" content="2016-03-20">
+              2016-03-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/20/现代软件工程-计算器的制作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/现代软件工程-计算器的制作/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u76EE_u6807_uFF1A_u6233_u6211"><a href="#u76EE_u6807_uFF1A_u6233_u6211" class="headerlink" title="目标：戳我"></a>目标：<a href="http://www.cnblogs.com/xinz/p/3803035.htm" target="_blank" rel="external">戳我</a></h4><ul>
+<li>除了整数以外，还要支持真分数的四则运算。 （例如：  1/6 + 1/8 = 7/24）</li>
+<li>让程序能接受用户输入答案，并判定对错。 最后给出总共 对/错 的数量。</li>
+<li>逐步扩展功能和可以支持的表达式类型，最后希望能支持下面类型的题目 （最多 10 个运算符，括号的数量不限制）：<ol>
+<li>25 - 3 * 4 - 2 / 2 + 89 = ？</li>
+<li>1/2 + 1/3 - 1/4 = ？ </li>
+<li>（5 - 4 ） * （3 +28） =？</li>
+</ol>
+</li>
+<li>一次可以批量出 100 道以上的题目，保存在文本文件中， 并且保证题目不能重复，（1+2） 和 （2+1） 是重复的题目。 怎么保证题目不重复呢，请看<a href="http://www.cnblogs.com/jiel/p/4810756.html" target="_blank" rel="external">详细题目要求</a></li>
+</ul>
+<h3 id="u5206_u6790"><a href="#u5206_u6790" class="headerlink" title="分析"></a>分析</h3><p>题目要求有整数和分数的混合输入（不排除加上小数的混合输入），而且要求运算结果也需要为“真分数”的方式给出。好像没有现成的数据结构可以用，因此，这里先定义一个数据结构：Number</p>
+<p>Number 成员变量：</p>
+<ol>
+<li>fenmu ：分数的分母</li>
+<li>fenzi ：分数的分子</li>
+<li>type ：表示正负。当输入为小数时用来辅助操作</li>
+</ol>
+<p>此外还包括一些基本的函数，比如分母分子的约分，分母是否为0，定义了Number的加减乘除操作，以及覆盖的toString方法等等。为了与正常四则运算的”/“区分，这里引入了一个”$”符号，来表述Number之间的除法运算。</p>
+<h5 id="u90FD_u8BF4_u4EE3_u7801_3D_u6570_u636E_u7ED3_u6784+_u7B97_u6CD5_uFF0C_u73B0_u5728_u6709_u4E86_u6570_u636E_u7ED3_u6784_uFF0C_u63A5_u4E0B_u6765_u7684_u5DE5_u4F5C_u5C31_u662F_u627E_u4E00_u4E2A_u7B97_u6CD5_u6765_u89E3_u6790_u56DB_u5219_u8FD0_u7B97_u516C_u5F0F_u4E86_u3002_u8FD9_u91CC_u6211_u7528_u5230_u7684_u662F_u9996_u5C3E_u626B_u63CF_uFF0C_u628A_u56DB_u5219_u8FD0_u7B97_u7684_u5B57_u7B26_u4E32_u6807_u51C6_u5316_uFF0C_u7136_u540E_u7528_u6808_u6765_u8F85_u52A9_u8BA1_u7B97_u7684_u65B9_u6CD5_u3002"><a href="#u90FD_u8BF4_u4EE3_u7801_3D_u6570_u636E_u7ED3_u6784+_u7B97_u6CD5_uFF0C_u73B0_u5728_u6709_u4E86_u6570_u636E_u7ED3_u6784_uFF0C_u63A5_u4E0B_u6765_u7684_u5DE5_u4F5C_u5C31_u662F_u627E_u4E00_u4E2A_u7B97_u6CD5_u6765_u89E3_u6790_u56DB_u5219_u8FD0_u7B97_u516C_u5F0F_u4E86_u3002_u8FD9_u91CC_u6211_u7528_u5230_u7684_u662F_u9996_u5C3E_u626B_u63CF_uFF0C_u628A_u56DB_u5219_u8FD0_u7B97_u7684_u5B57_u7B26_u4E32_u6807_u51C6_u5316_uFF0C_u7136_u540E_u7528_u6808_u6765_u8F85_u52A9_u8BA1_u7B97_u7684_u65B9_u6CD5_u3002" class="headerlink" title="都说代码=数据结构+算法，现在有了数据结构，接下来的工作就是找一个算法来解析四则运算公式了。这里我用到的是首尾扫描，把四则运算的字符串标准化，然后用栈来辅助计算的方法。"></a>都说代码=数据结构+算法，现在有了数据结构，接下来的工作就是找一个算法来解析四则运算公式了。这里我用到的是首尾扫描，把四则运算的字符串标准化，然后用栈来辅助计算的方法。</h5><blockquote>
+<p>标准化</p>
+</blockquote>
+<p>所谓标准化，就是把四则运算所在的字符串中的括号，小数点等不是数字，又不是运算符的字符。消除的方法是递归调用。</p>
+<h6 id="u7B97_u6CD5"><a href="#u7B97_u6CD5" class="headerlink" title="算法"></a>算法</h6><ol>
+<li>如果输入的字符串str里面不包含任何的”(“,”)”以及”.”，那么可以直接计算。这里运算的优先级：$ 优先于<em> /，优先于 + - ；进栈出栈的基本方法：用一个变量保存当前扫描光标所在位置之前最近出现的符号o，扫描到数字，如果o为加减，减乘-1，加直接进栈；如果是乘除，则要取出栈顶元素然后跟当前元素进行乘除运算，进栈；加上$，需要多一个变量来保存$之前的操作符，原理是一样的，简单不过要复杂些，细心点就不会弄错了，比如$之前是 / ，这时候只需要栈顶元素乘以当前数字构成的Number，如果之前是</em>，则直接相乘。</li>
+<li>如果str中包含括号，先判断左右括号的数量以及出现的位置是否合法，如果合法则报错，提示用户重新输入；如果合法，把括号内部的内容拿出来带入第一步，得到一个Number，然后用Number的toString值替换括号出现的区域；</li>
+<li>如果str中包含小数点。则扫描str，得到小数点前后的数，把这个数用Number表示出来，然后用此Number的toString方法替代掉小数点所在的区间，返回s；</li>
+</ol>
+<p>有了后台的算法，做个图形化界面就不是难事儿了<br><img src="/images/calculator.png" title="计算器"></p>
+<ol>
+<li>可以用鼠标点击按钮来输入，也可以在输入框中直接键盘输入。</li>
+<li>随机生成：默认是生成n个运算符，n在1~3之间，大小在10以内的n+1数</li>
+<li>重置：清空输入和输出</li>
+<li>计算：获得结果</li>
+<li>目前的版本，随机输入还不能生成带括号的字符串..还没想到一个比较好的方法去去重，好像应该选树节点的方式来做的，那样子貌似可以方便去重。</li>
+</ol>
+<p>先这样子…回寝室再写</p>
+<p>2016年03月20日22:37:16</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/18/一道编程题：贪食蛇可以获得的最大分数？/" itemprop="url">
                   一道编程题：贪食蛇可以获得的最大分数？
                 </a>
@@ -1194,110 +1332,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/11/吐槽leetcode/" itemprop="url">
-                  吐槽leetcode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-11T15:27:20+08:00" content="2015-12-11">
-              2015-12-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/11/吐槽leetcode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/11/吐槽leetcode/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>很简单的题目： <a href="https://leetcode.com/problems/anagrams/" target="_blank" rel="external">https://leetcode.com/problems/anagrams/</a><br>这种错误不是一次两次了。。返回的list的顺序和他的不一致就报错么？？</p>
-<p>理解不能…上来吐槽同时试试图片显示功能。</p>
-<img src="/images/fucklc.png" title="坑爹的leetcode">
-<p>2015年12月11日15:29:20</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1343,7 +1377,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1410,7 +1444,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
